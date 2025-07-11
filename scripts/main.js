@@ -33,13 +33,18 @@ record.addEventListener("mouseleave", () => {
 })
 
 
+window.addEventListener("scroll", () => {
 const navbar = document.querySelector('.navbar')
-const top_nav_bar = document.querySelector('.top_navbar')
+const top_nav_bar = document.querySelector('.fixed_navbar_wrapper')
 let navbar_distance_from_top = navbar.getBoundingClientRect().top
 if (navbar_distance_from_top <= 0)
 {
-
+    top_nav_bar.style.display = "block"
 }
+else {
+    top_nav_bar.style.display = "none"
+}
+})
 
 let socials_sidebar_state = true
 

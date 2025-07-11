@@ -10,6 +10,49 @@ body {
     overflow-x: hidden;
 }
 
+.fixed_navbar_wrapper {
+    position: fixed;
+    top: 0;
+    display: none;
+    width: 100vw;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 101;
+}
+
+.fixed_navbar_wrapper ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+.fixed_navbar_wrapper ul li {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.fixed_navbar_wrapper ul li:hover {
+    background-color: rgba(255,255,255,0.4);
+    cursor: pointer;
+}
+
+.fixed_navbar_wrapper ul li:hover a {
+    color: #4b0e85;
+}
+
+.fixed_navbar_wrapper ul li a {
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 .corner_record_wrapper {
     position: fixed;
     top: 2rem;
