@@ -21,6 +21,41 @@ body {
     animation: spin_record 2000s infinite;
 }
 
+.socials_sidebar_wrapper {
+    position: fixed;
+    width: 10%;
+    background-color: rgba(128,128,128,0.5);
+    left: 0;
+    top: 20vh;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials_sidebar_wrapper .socials_inner_wrapper {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.socials_sidebar_wrapper .close_socials_button {
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
 .landing_section_wrapper {
     max-width: 100vw;
     height: 100vh;
@@ -149,5 +184,22 @@ footer {
     }
     to {
         transform: rotate(500000deg);
+    }
+}
+
+@keyframes close_socials {
+    from {
+        width: 10%;
+    }
+    to {
+        width: 2rem;
+    }
+}
+@keyframes open_socials {
+    from {
+        width: 2rem;
+    }
+    to {
+        width: 10%;
     }
 }
