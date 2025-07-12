@@ -1,3 +1,41 @@
+const handle_scroll_buttons = () => {
+    const buttons = {
+        home: document.getElementById("home_button"),
+        about: document.getElementById("about_button"),
+        live: document.getElementById("live_button"),
+        booking: document.getElementById("booking_button")
+    }
+
+    const sections = {
+        home: document.querySelector(".home_wrapper"),
+        about: document.querySelector(".about_wrapper"),
+        live: document.querySelector(".live_wrapper"),
+        booking: document.querySelector(".booking_wrapper")
+    }
+
+    let currentSection = null;
+
+    for (let key in sections) {
+        let top = sections[key].getBoundingClientRect().top;
+        let bottom = sections[key].getBoundingClientRect().bottom;
+
+        if (top <= window.innerHeight * 0.5 && bottom >= window.innerHeight * 0.5) {
+            currentSection = key;
+            break;
+        }
+    }
+
+    for (let key in buttons) {
+        if (key === currentSection) {
+            buttons[key].classList.add("active_page_section_button");
+            buttons[key].children.item(0).style.color = "black";
+        } else {
+            buttons[key].classList.remove("active_page_section_button");
+            buttons[key].children.item(0).style.color = "white";
+        }
+    }
+}
+
 window.onload = function(){
     window.scrollTo(0,0)
 }
@@ -44,6 +82,8 @@ if (navbar_distance_from_top <= 0)
 else {
     top_nav_bar.style.display = "none"
 }
+
+handle_scroll_buttons()
 })
 
 let socials_sidebar_state = true

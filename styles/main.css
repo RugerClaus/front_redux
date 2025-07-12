@@ -10,6 +10,11 @@ body {
     overflow-x: hidden;
 }
 
+.active_page_section_button {
+    background-color: white;
+    color: black;
+}
+
 .fixed_navbar_wrapper {
     position: fixed;
     top: 0;
