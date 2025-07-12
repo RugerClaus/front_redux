@@ -65,7 +65,7 @@ close_socials_button.addEventListener("click", () => {
         socials_wrapper.style.animation = "close_socials .5s"
     } else {
         socials_wrapper.style.animation = "open_socials .5s"
-        socials_wrapper.style.width = "10%" // or whatever your default width is
+        socials_wrapper.style.width = "8rem" // or whatever your default width is
         socials_inner_wrapper.style.display = "flex" // or "block" depending on your layout
         close_socials_button.innerHTML = "<<"
         close_socials_button.style.height = "2rem"
