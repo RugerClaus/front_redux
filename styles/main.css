@@ -235,7 +235,7 @@ footer {
 
 @keyframes close_socials {
     from {
-        width: 10%;
+        width: 8rem;
     }
     to {
         width: 2rem;
@@ -246,6 +246,6 @@ footer {
         width: 2rem;
     }
     to {
-        width: 10%;
+        width: 8rem;
     }
 }

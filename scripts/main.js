@@ -72,7 +72,7 @@ close_socials_button.addEventListener("click", () => {
         close_socials_button.style.backgroundColor = "red"
     }
 
-    if(socials_wrapper.style.width != "10%")
+    if(socials_wrapper.style.width != "8rem")
     {
         socials_inner_wrapper.style.display = "none"
     }
