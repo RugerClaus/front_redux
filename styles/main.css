@@ -69,11 +69,11 @@ body {
 
 .socials_sidebar_wrapper {
     position: fixed;
-    width: 10%;
+    width: 8rem;
     background-color: rgba(128,128,128,0.5);
     left: 0;
     top: 20vh;
-    height: 50vh;
+    height: 25rem;
     display: flex;
     justify-content: center;
     align-items: center;
