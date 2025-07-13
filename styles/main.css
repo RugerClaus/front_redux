@@ -84,7 +84,7 @@ body {
     position: fixed;
     width: 8rem;
     background-color: rgba(128,128,128,0.5);
-    left: 0;
+    right: 0;
     top: 20vh;
     height: 25rem;
     display: flex;
@@ -107,7 +107,7 @@ body {
     color: white;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,7 +200,7 @@ body {
 .home_wrapper {
     min-height: 100vh;
     height: fit-content;
-    background-color: rgba(128,128,128,0.5);
+    background-color: rgba(0,0,0,0.9);
     display: flex;
     justify-content: center;
     color: white;
@@ -288,6 +288,9 @@ body {
 
 .home_wrapper .main_content_wrapper .article_section_wrapper article {
     max-width: 20rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    padding: 2rem;
 }
 
 /* ABOUT PAGE */

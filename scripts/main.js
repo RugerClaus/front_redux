@@ -113,7 +113,7 @@ close_socials_button.addEventListener("click", () => {
     if (!socials_sidebar_state) {
         socials_wrapper.style.width = "2rem"
         socials_inner_wrapper.style.display = "none"
-        close_socials_button.innerHTML = ">>"
+        close_socials_button.innerHTML = "<<"
         close_socials_button.style.height = "100%"
         close_socials_button.style.backgroundColor = "rgba(0,0,0,0)"
         socials_wrapper.style.animation = "close_socials .5s"
@@ -121,7 +121,7 @@ close_socials_button.addEventListener("click", () => {
         socials_wrapper.style.animation = "open_socials .5s"
         socials_wrapper.style.width = "8rem" // or whatever your default width is
         socials_inner_wrapper.style.display = "flex" // or "block" depending on your layout
-        close_socials_button.innerHTML = "<<"
+        close_socials_button.innerHTML = ">>"
         close_socials_button.style.height = "2rem"
         close_socials_button.style.backgroundColor = "red"
     }
