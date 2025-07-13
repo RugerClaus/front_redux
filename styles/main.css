@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: Helvetica;
 }
 
 body {
@@ -171,7 +172,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 98%;
 }
 
 .landing_section_wrapper .bottom .bottom_inner_wrapper nav ul li {
@@ -190,8 +191,85 @@ body {
 
 /* HOME PAGE */
 .home_wrapper {
-    height: 200vh;
-    background-color: red;
+    min-height: 100vh;
+    height: fit-content;
+    background-color: rgba(128,128,128,0.5);
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.home_wrapper .main_content_wrapper {
+    width: 90%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    height: 90%;
+    bottom: 0;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.home_wrapper .main_content_wrapper .announcements_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.home_wrapper .main_content_wrapper .announcements_wrapper .slider_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_wrapper .main_content_wrapper .announcements_wrapper .slider_wrapper .carousel {
+    max-width: 56.5625rem;
+    max-height: 31.8125rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home_wrapper .main_content_wrapper .announcements_wrapper .slider_wrapper .carousel .carousel_image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel_image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.home_wrapper .main_content_wrapper .announcements_wrapper .slider_wrapper .carousel_indicator_wrapper {
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home_wrapper .main_content_wrapper .announcements_wrapper .carousel_indicator_wrapper .carousel_indicator {
+    width: .5rem;
+    height: .5rem;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ABOUT PAGE */
@@ -246,11 +324,21 @@ footer {
         width: 2rem;
     }
 }
+
 @keyframes open_socials {
     from {
         width: 2rem;
     }
     to {
         width: 8rem;
+    }
+}
+
+@keyframes carousel_fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

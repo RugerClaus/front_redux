@@ -1,3 +1,19 @@
+window.onload = function(){
+    window.scrollTo(0,0)
+}
+
+const current_url = 'dev.unknownanarchist.blog'
+
+const body = document.querySelector('body')
+
+// specialized functionality
+
+// carousel
+const carousel_script_tag = document.createElement("script")
+carousel_script_tag.src = 'scripts/carousel.js'
+body.appendChild(carousel_script_tag)
+
+// main site logic
 const handle_scroll_buttons = () => {
     const buttons = {
         home: document.getElementById("home_button"),
@@ -36,17 +52,15 @@ const handle_scroll_buttons = () => {
     }
 }
 
-window.onload = function(){
-    window.scrollTo(0,0)
-}
+
 
 let track_number = Math.floor(Math.random() * 6) + 1
 
 const gun = document.getElementById("gun")
-const gunshot = new Audio("assets/audio/gunshot.wav")
+const gunshot = new Audio(`https://${current_url}/assets/audio/gunshot.wav`)
 
 const record = document.getElementById("record")
-const song = new Audio(`assets/audio/music/${track_number}.mp3`)
+const song = new Audio(`https://${current_url}/assets/audio/music/${track_number}.mp3`)
 
 gun.addEventListener("click", ()=>{
     gunshot.currentTime = 0
