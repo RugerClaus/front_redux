@@ -16,6 +16,16 @@ body {
     color: black;
 }
 
+.siteimg {
+    max-width: 10rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    display: none;
+}
+
 .fixed_navbar_wrapper {
     position: fixed;
     top: 0;
@@ -59,8 +69,6 @@ body {
     align-items: center;
     height: 100%;
 }
-
-
 
 .corner_record_wrapper {
     position: fixed;
