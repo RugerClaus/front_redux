@@ -60,13 +60,13 @@ function render_carousel(items) {
     current_index = (current_index + 1) % images.length;
 
     images[current_index].style.display = 'block';
-    images[current_index].style.animation = 'carousel_fade_in .5s'
+    images[current_index].style.animation = 'carousel_fade_in 1s'
     indicators[current_index].style.backgroundColor = 'blue';
 
     if (blurbs.length > 0) {
       blurbContainer.innerText = blurbs[current_index];
     }
-  }, 3000);
+  }, 5000);
 }
 
 // Try to fetch real carousel data
