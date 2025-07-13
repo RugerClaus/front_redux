@@ -23,7 +23,6 @@ body {
     object-fit: contain;
     display: block;
     margin: auto;
-    display: none;
 }
 
 .fixed_navbar_wrapper {
