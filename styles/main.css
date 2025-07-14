@@ -291,18 +291,63 @@ body {
     border: 1px solid white;
     border-radius: 2rem;
     padding: 2rem;
+    height: fit-content;
 }
 
 /* ABOUT PAGE */
 .about_wrapper {
-    height: 200vh;
-    background-color: purple;
+    min-height: 100vh;
+    height: fit-content;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    color: white;
 }
+
+.about_wrapper .band_wrapper {
+    width: 90%;
+    height: 90%;
+    bottom: 0;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about_wrapper .band_wrapper .article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about_wrapper .band_wrapper .article .band_photo_wrapper {
+    max-width: 56.5625rem;
+    max-height: 31.8125rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_wrapper .article .about_them_cbd_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    padding: 2rem;
+    max-width: 50rem;
+    height: 5rem;
+}
+
 
 /* LIVE PAGE */
 .live_wrapper {
     height: 200vh;
-    background-color: chartreuse;
+    background-color: rgba(0,0,0,0.9);
 }
 
 /* BOOKING PAGE */
