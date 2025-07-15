@@ -123,7 +123,15 @@
     </div>
     <!-- Booking Page section -->
     <div class="booking_wrapper" id="booking">
-
+        <form class="booking_form" action="#" method="POST">
+            <input type="text" name="contact_name" id="contact_name_input" required>
+            <select name="message_subject" id="contact_subject_select_field">
+                <option id="book" value="book">Booking</option>
+                <option id="inquiry" value="inquiry">Inquiry</option>
+            </select>
+            <input type="text" name="contact_phone" id="phone" required>
+            <textarea name="message_body" id="message_body" name="message_body"></textarea>
+        </form>
     </div>
     <footer>
 

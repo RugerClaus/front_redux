@@ -277,6 +277,7 @@ body {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 
 .home_wrapper .main_content_wrapper .article_section_wrapper {
@@ -346,13 +347,13 @@ body {
 
 /* LIVE PAGE */
 .live_wrapper {
-    height: 200vh;
+    min-height: 100vh;
     background-color: rgba(0,0,0,0.9);
 }
 
 /* BOOKING PAGE */
 .booking_wrapper {
-    height: 200vh;
+    min-height: 100vh;
     background-color: steelblue;
 }
 
