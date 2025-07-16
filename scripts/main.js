@@ -2,7 +2,7 @@ window.onload = function(){
     window.scrollTo(0,0)
 }
 
-const current_url = 'dev.unknownanarchist.blog'
+const media_url = 'media.themcoldbloodeddrifters.com'
 
 const body = document.querySelector('body')
 
@@ -10,8 +10,14 @@ const body = document.querySelector('body')
 
 // carousel
 const carousel_script_tag = document.createElement("script")
+const about_script_tag = document.createElement("script")
+const booking_form_script_tag = document.createElement("script")
 carousel_script_tag.src = 'scripts/carousel.js'
+about_script_tag.src = 'scripts/about.js'
+booking_form_script_tag.src = 'scripts/booking.js'
 body.appendChild(carousel_script_tag)
+body.appendChild(about_script_tag)
+body.appendChild(booking_form_script_tag)
 
 // main site logic
 const handle_scroll_buttons = () => {
@@ -57,10 +63,10 @@ const handle_scroll_buttons = () => {
 let track_number = Math.floor(Math.random() * 6) + 1
 
 const gun = document.getElementById("gun")
-const gunshot = new Audio(`https://${current_url}/assets/audio/gunshot.wav`)
+const gunshot = new Audio(`https://${media_url}/assets/audio/gunshot.wav`)
 
 const record = document.getElementById("record")
-const song = new Audio(`https://${current_url}/assets/audio/music/${track_number}.mp3`)
+const song = new Audio(`https://${media_url}/assets/audio/music/${track_number}.mp3`)
 
 gun.addEventListener("click", ()=>{
     gunshot.currentTime = 0

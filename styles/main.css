@@ -114,6 +114,18 @@ body {
     cursor: pointer;
 }
 
+.message_status {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 4rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: fixed;
+    top: 90vh;
+    left: 80vw;
+}
 
 .landing_section_wrapper {
     max-width: 100vw;
@@ -354,7 +366,34 @@ body {
 /* BOOKING PAGE */
 .booking_wrapper {
     min-height: 100vh;
+    height: fit-content;
     background-color: steelblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking_wrapper .booking_form {
+    width: 40rem;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.booking_wrapper .booking_form input,select {
+    height: 2.5rem;
+    font-size: 1.5rem;
+}
+
+.booking_wrapper .booking_form textarea {
+    min-height: 6rem;
+    font-size: 1.5rem;
+}
+
+.booking_wrapper .booking_form label {
+    font-weight: bold;
+    font-size: 1.3rem;
 }
 
 /* FOOTER */

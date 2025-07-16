@@ -22,7 +22,7 @@
         </ul>
     </nav>
     <div class="corner_record_wrapper">
-        <img id="record" src="assets/master/corner_record.png" alt="Music Player">
+        <img id="record" src="https://media.themcoldbloodeddrifters.com/assets/master/corner_record.png" alt="Music Player">
     </div>
     <div class="socials_sidebar_wrapper">
         <div class="close_socials_button">
@@ -30,22 +30,24 @@
         </div>
         <div class="socials_inner_wrapper">
             <a href="https://www.facebook.com/people/Them-Coldblooded-Drifters/61574624801989/" target="_blank">
-                <img src="assets/master/socials/facebook.png" alt="Facebook">
+                <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/facebook.png" alt="Facebook">
             </a>
             <!-- Don't forget to come back and add target="_blank" -->
             <a href="#" >
-                <img src="assets/master/socials/instagram.png" alt="Instagram">
+                <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/instagram.png" alt="Instagram">
             </a>
             <a href="#">
-                <img src="assets/master/socials/tiktok.png" alt="Tik Tok">
+                <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/tiktok.png" alt="Tik Tok">
             </a>
         </div>
     </div>
+
+    <div id="status_message" class="message_status"></div>
     <!-- Landing Page -->
     <div class="landing_section_wrapper">
         <div class="top">
             <div class="top_inner_wrapper">
-                <img id="gun" src="assets/master/tempback.png" alt="Them Cold Blooded Drifters">
+                <img id="gun" src="https://media.themcoldbloodeddrifters.com/assets/master/tempback.png" alt="Them Cold Blooded Drifters">
             </div>
         </div>
         <div class="bottom">
@@ -123,14 +125,19 @@
     </div>
     <!-- Booking Page section -->
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" action="#" method="POST">
+        <form class="booking_form" action="/contact" method="POST">
+            <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
+            <label for="message_subject">Subject:</label>
             <select name="message_subject" id="contact_subject_select_field">
                 <option id="book" value="book">Booking</option>
                 <option id="inquiry" value="inquiry">Inquiry</option>
             </select>
+            <label for="contact_phone">Phone Number:</label>
             <input type="text" name="contact_phone" id="phone" required>
+            <label for="message_body">Message</label>
             <textarea name="message_body" id="message_body" name="message_body"></textarea>
+            <button type="sumbit">Send</button>
         </form>
     </div>
     <footer>
