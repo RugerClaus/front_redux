@@ -359,6 +359,7 @@ body {
 
 /* LIVE PAGE */
 .live_wrapper {
+    display: flex;
     min-height: 100vh;
     background-color: rgba(0,0,0,0.9);
 }
@@ -381,6 +382,22 @@ body {
     gap: 1.5rem;
 }
 
+.booking_wrapper .booking_form .send_message_button {
+    width: 6rem;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.booking_wrapper .booking_form .send_message_button:hover {
+    border: 3px solid red;
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
 .booking_wrapper .booking_form input,select {
     height: 2.5rem;
     font-size: 1.5rem;
@@ -389,6 +406,7 @@ body {
 .booking_wrapper .booking_form textarea {
     min-height: 6rem;
     font-size: 1.5rem;
+    resize: none;
 }
 
 .booking_wrapper .booking_form label {

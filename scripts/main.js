@@ -140,3 +140,15 @@ close_socials_button.addEventListener("click", () => {
         socials_inner_wrapper.style.display = "flex"
     }
 })
+
+const live_section = document.getElementById('live')
+const live_tab = document.querySelector('.live_nav_button')
+
+if(live_section.children.length > 0){
+    live_section.style.display = 'flex'
+    live_tab.style.display = 'flex'
+}
+else {
+    live_section.style.display = 'none'
+    live_tab.style.display = 'none'
+}

@@ -15,7 +15,7 @@
         <ul>
             <li id="home_button"><a href="#home">Home</a></li>
             <li id="about_button"><a href="#about">About</a></li>
-            <li id="live_button"><a href="#live">Live</a></li>
+            <li id="live_button" class="live_nav_button"><a href="#live">Live</a></li>
             <li id="booking_button"><a href="#booking">Booking</a></li>
             <li><a href="#"> Music Portal</a></li>
             <li><a href="#">Merch Store</a></li>
@@ -33,11 +33,14 @@
                 <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/facebook.png" alt="Facebook">
             </a>
             <!-- Don't forget to come back and add target="_blank" -->
-            <a href="#" >
+            <a href="https://www.instagram.com/them_coldblooded_drifters/" >
                 <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/instagram.png" alt="Instagram">
             </a>
-            <a href="#">
+            <a href="https://tiktok.com/@themcoldbloodeddrifters">
                 <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/tiktok.png" alt="Tik Tok">
+            </a>
+            <a href="https://www.youtube.com/@ThemColdbloodedDrifters">
+                <img src="https://media.themcoldbloodeddrifters.com/assets/master/socials/youtube.png" alt="YouTube">
             </a>
         </div>
     </div>
@@ -65,7 +68,7 @@
                         <!-- Section 6 Aiden -->
                         <li><a href="#about">About</a></li>
                         <!-- The Live section of the site will contain dates for shows -->
-                        <li><a href="#live">Live</a></li>
+                        <!-- <li class="live_nav_button"><a href="#live">Live</a></li> -->
                         <!-- Will allow users to send an email to booking@themcoldbloodeddrifters.com -->
                         <li ><a href="#booking">Booking</a></li>
                         <!-- music.themcoldbloodeddrifters.com A THREE.js app that will contain an interactive music player -->
@@ -117,6 +120,13 @@
                 </div>
             </div>
         </section>
+        <section class="ryan_wrapper">
+            <div class="portrait_photo_wrapper"></div>
+            <div class="text_wrapper">
+                
+            </div>
+            <div class="landscape_photo_wrapper"></div>
+        </section>
         
     </div>
     <!-- Live Shows Page section -->
@@ -125,7 +135,7 @@
     </div>
     <!-- Booking Page section -->
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" action="/contact" method="POST">
+        <form class="booking_form" action="https://api.themcoldbloodeddrifters.com/contact/send" method="POST">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
             <label for="message_subject">Subject:</label>
@@ -137,7 +147,7 @@
             <input type="text" name="contact_phone" id="phone" required>
             <label for="message_body">Message</label>
             <textarea name="message_body" id="message_body" name="message_body"></textarea>
-            <button type="submit">Send</button>
+            <button type="submit" class="send_message_button">Send</button>
         </form>
     </div>
     <footer>
