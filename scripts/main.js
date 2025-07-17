@@ -152,3 +152,7 @@ else {
     live_section.style.display = 'none'
     live_tab.style.display = 'none'
 }
+
+const copyright = document.getElementById("copyright_year")
+const date = new Date().getFullYear()
+copyright.innerHTML = `Them Coldblooded Drifters &copy; ${date}`
