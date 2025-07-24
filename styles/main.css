@@ -419,6 +419,8 @@ body {
 .booking_wrapper {
     min-height: 100vh;
     height: fit-content;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
     background-color: steelblue;
     display: flex;
     justify-content: center;
