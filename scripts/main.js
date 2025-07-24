@@ -35,25 +35,70 @@ const handle_scroll_buttons = () => {
         booking: document.querySelector(".booking_wrapper")
     }
 
-    let currentSection = null;
+    let current_section = null;
 
     for (let key in sections) {
         let top = sections[key].getBoundingClientRect().top;
         let bottom = sections[key].getBoundingClientRect().bottom;
 
         if (top <= window.innerHeight * 0.5 && bottom >= window.innerHeight * 0.5) {
-            currentSection = key;
+            current_section = key;
             break;
         }
     }
 
     for (let key in buttons) {
-        if (key === currentSection) {
+        if (key === current_section) {
             buttons[key].classList.add("active_page_section_button");
             buttons[key].children.item(0).style.color = "black";
         } else {
             buttons[key].classList.remove("active_page_section_button");
             buttons[key].children.item(0).style.color = "white";
+        }
+    }
+}
+
+function handle_band_buttons() {
+
+    const buttons = {
+        theband: document.getElementById('the_band_button'),
+        ryan: document.getElementById('subsection_ryan_button'),
+        ethan: document.getElementById('subsection_ethan_button'),
+        isa: document.getElementById("subsection_isa_button"),
+        roger: document.getElementById("subsection_roger_button"),
+        aiden: document.getElementById("subsection_aiden_button")
+    }
+
+    const sections = {
+        theband: document.getElementById('the_band'),
+        ryan: document.getElementById('subsection_ryan'),
+        ethan: document.getElementById('subsection_ethan'),
+        isa: document.getElementById("subsection_isa"),
+        roger: document.getElementById("subsection_roger"),
+        aiden: document.getElementById("subsection_aiden")
+    }
+
+    let current_section = null;
+
+    for (let key in sections) {
+        let top = sections[key].getBoundingClientRect().top;
+        let bottom = sections[key].getBoundingClientRect().bottom;
+
+        if (top <= window.innerHeight * 0.5 && bottom >= window.innerHeight * 0.5) {
+            current_section = key;
+            break;
+        }
+    }
+
+    for (let key in buttons) {
+        if (key === current_section) {
+            buttons[key].classList.add("active_page_section_button");
+            buttons[key].style.backgroundColor = "white";
+            buttons[key].style.color = "black"
+        } else {
+            buttons[key].classList.remove("active_page_section_button");
+            buttons[key].style.backgroundColor = "rgba(83, 0, 47, 0.5)";
+            buttons[key].style.color = "white"
         }
     }
 }
@@ -90,6 +135,14 @@ record.addEventListener("mouseleave", () => {
     console.log("paused_song")
 })
 
+let band_member_nav_visible = false
+const band_member_nav = document.querySelector('.band_member_nav')
+
+function toggle_band_member_nav()
+{
+    band_member_nav_visible = !band_member_nav_visible
+}
+
 
 window.addEventListener("scroll", () => {
 const navbar = document.querySelector('.navbar')
@@ -102,8 +155,25 @@ if (navbar_distance_from_top <= 0)
 else {
     top_nav_bar.style.display = "none"
 }
-
 handle_scroll_buttons()
+const band_member_nav = document.querySelector(".band_member_nav")
+const band_wrapper = document.querySelector(".about_wrapper")
+const band_wrapper_distance_from_top = band_wrapper.getBoundingClientRect().top
+
+if(band_wrapper_distance_from_top <= 0)
+{
+    band_member_nav.style.display = "flex"
+}
+else
+{
+    band_member_nav.style.display = "none"
+}
+handle_band_buttons()
+const booking_wrapper = document.querySelector(".booking_wrapper")
+const booking_wrapper_distance_from_top = booking_wrapper.getBoundingClientRect().top
+if (booking_wrapper_distance_from_top <= 0){
+    band_member_nav.style.display = "none"
+}
 })
 
 let socials_sidebar_state = true
