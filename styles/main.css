@@ -52,7 +52,6 @@ body {
 }
 
 .fixed_navbar_wrapper ul li:hover {
-    background-color: rgba(255,255,255,0.4);
     cursor: pointer;
 }
 
@@ -397,15 +396,35 @@ body {
     height: 5rem;
 }
 
-.about_wrapper .ryan_wrapper {
-    background-color: whitesmoke;
-}
-
 .about_wrapper .member_wrapper {
     display: flex;
     width: 100%;
     padding-top: 5rem;
     padding-bottom: 5rem;
+    padding-left: 5rem;
+    gap: 20rem;
+    justify-content: space-between;
+}
+
+.about_rapper .member_wrapper img {
+    object-fit: contain;
+    width: 40%;
+}
+
+/*THIS IS .about_wrapper .member_wrapper .text_wrapper*/
+.text_wrapper {
+    color: black;
+    font-size: 1.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 40%;
+}
+
+.text_wrapper .bio_wrapper {
+    display: flex;
+
 }
 
 /* LIVE PAGE */
