@@ -1,3 +1,5 @@
+const api_url = "http://localhost:7000"
+
 const carousel = document.querySelector('.carousel');
 const indicatorWrapper = document.querySelector('.carousel_indicator_wrapper');
 const blurbContainer = document.querySelector('.blurb_container');
@@ -86,20 +88,31 @@ function render_carousel(items) {
   }, 5000);
 }
 
-// Try to fetch real carousel data
-fetch('https://api.themcoldbloodeddrifters.com/carousel')
-  .then(response => response.json())
-  .then(carousel_items => {
-    if (!Array.isArray(carousel_items) || carousel_items.length === 0) {
-      console.warn("Empty API response, using defaults.");
+fetch(`${api_url}/carousel`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+  },)
+  .then(res => {
+    if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+    return res.json();
+  })
+  .then(data => {
+    const carousel_images = data.images;
+    if (Array.isArray(carousel_images) && carousel_images.length) {
+      console.log("Loading Carousel Images: " + data.status)
+      render_carousel(carousel_images)
+    } 
+    else 
+    {
+      console.warn("Empty API response, using defaults.")
       render_carousel(defaultItems);
-    } else {
-      render_carousel(carousel_items);
     }
   })
-  .catch(error => {
-    console.warn("Fetch error, using default images:", error);
-    render_carousel(defaultItems);
+  .catch((error) => {
+      console.warn("Fetch error, using default images:", error)
+      render_carousel(defaultItems)
   });
 
   let dots = document.querySelector('.carousel_indicator_wrapper').children

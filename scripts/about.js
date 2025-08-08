@@ -1,4 +1,4 @@
-const apiHost = "http://localhost:7000";
+const api_host = "http://localhost:7000";
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", initialize_about_section);
@@ -14,18 +14,16 @@ function initialize_about_section() {
   if (!about_wrapper || !band_member_nav || !band_member_nav_list) return;
 
   const section_map = {
-    theband: document.querySelector(".band_wrapper")
   };
 
   const button_map = {
-    theband: document.getElementById("the_band_button")
   };
 
   function make_member_section(id, name, portrait, bio, instrument) {
     const section = document.createElement("section");
     section.id = id;
     section.classList.add("member_wrapper");
-    section.style.minHeight = "200px";
+    section.style.minHeight = "100vh";
   
     const img = document.createElement("img");
     img.src = portrait || 'https://placehold.co/300x700';
@@ -80,6 +78,107 @@ function initialize_about_section() {
 
     update_band_button_state(button_map, section_map);
   }
+
+  function render_band_bio(name, memleftright, bio, photo) {
+    const about_wrapper = document.querySelector('.about_wrapper');
+  
+    const section = document.createElement('section');
+    section.classList.add('band_wrapper');
+    section.id = 'the_band';
+  
+    const article = document.createElement('div');
+    article.classList.add('article');
+  
+    const figure = document.createElement('figure');
+    figure.classList.add('band_photo_wrapper');
+  
+    const img = document.createElement('img');
+    img.src = photo || 'https://placehold.co/1280x720?text=Band+Photo';
+    img.alt = 'Band Photo Placeholder';
+  
+
+    console.log('Band list left to right:', memleftright);
+    const figcaption = document.createElement('p');
+    figcaption.innerHTML = `${name} from left to right: ${memleftright || '(Enter here :))'}`;
+  
+    figure.appendChild(img);
+    
+  
+    const aboutDiv = document.createElement('div');
+    aboutDiv.classList.add('about_them_cbd_text');
+  
+    const p = document.createElement('p');
+    p.id = 'about_band_text';
+    p.textContent = bio || 'No bio available.';
+  
+    aboutDiv.appendChild(p);
+  
+    article.appendChild(figure);
+    article.appendChild(figcaption);
+    article.appendChild(aboutDiv);
+  
+    section.appendChild(article);
+    
+  
+    about_wrapper.appendChild(section);
+    
+    const band_member_nav = document.querySelector('.band_member_nav');
+    const band_member_nav_list = band_member_nav?.querySelector('ul');
+    if (band_member_nav_list) {
+      const [nav_entry, nav_link] = make_band_member_nav_entry(section.id,"The Band");
+      band_member_nav_list.appendChild(nav_entry);
+      section_map[section.id] = section;
+      button_map[section.id] = nav_link;
+    }
+
+  }
+
+  function render_band_bio_fallback() {
+    const about_wrapper = document.querySelector('.about_wrapper');
+    
+    const section = document.createElement('section');
+    section.classList.add('band_wrapper');
+    section.id = 'the_band';
+    
+    const article = document.createElement('div');
+    article.classList.add('article');
+    
+    const figure = document.createElement('figure');
+    figure.classList.add('band_photo_wrapper');
+    
+    const img = document.createElement('img');
+    img.src = 'https://placehold.co/1280x720?text=Band+Photo';
+    img.alt = 'Band Photo Placeholder';
+    
+    const caption = document.createElement('p');
+    caption.innerHTML = `Them Coldblooded Drifters from left to right: Enter Here`
+    
+    figure.appendChild(img);
+    
+    
+    const aboutDiv = document.createElement('div');
+    aboutDiv.classList.add('about_them_cbd_text');
+    
+    const p = document.createElement('p');
+    p.id = 'about_band_text';
+    p.textContent = 'Them Coldblooded Drifters is a band from Salt Lake City, Utah, USA. We make groovy Groove Metal with a dash of everything else. We aim to provide a memorable experience for all whom enter our realm!';
+    
+    aboutDiv.appendChild(p);
+    
+    article.appendChild(figure);
+    article.appendChild(caption);
+    article.appendChild(aboutDiv);
+    section.appendChild(article);
+    about_wrapper.appendChild(section);
+    const band_member_nav = document.querySelector('.band_member_nav');
+    const band_member_nav_list = band_member_nav?.querySelector('ul');
+    if (band_member_nav_list) {
+      const [nav_entry, nav_link] = make_band_member_nav_entry(section.id,"The Band");
+      band_member_nav_list.appendChild(nav_entry);
+      section_map[section.id] = section;
+      button_map[section.id] = nav_link;
+    }
+  }  
 
   function render_band_members(members) {
     members.forEach((member, index) => {
@@ -138,7 +237,7 @@ function initialize_about_section() {
     }, 10);
   });
 
-  fetch(`${apiHost}/about_data`, {
+  fetch(`${api_host}/about_data`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -150,13 +249,24 @@ function initialize_about_section() {
     })
     .then(data => {
       const members = data?.members;
+      const the_band = data.theband
+      console.log('the_band:', the_band);
+      if (!the_band || !the_band.band_list_left_to_right) {
+        render_band_bio_fallback();
+      } else {
+        render_band_bio(the_band.name, the_band.band_list_left_to_right, the_band.bio, the_band.image, section_map, button_map);
+      }
+      
+
       if (Array.isArray(members) && members.length) {
+        console.log("Loading Band Members: " + data.status);
         render_band_members(members);
       } else {
         render_subsection_default();
       }
     })
     .catch(() => {
+      render_band_bio_fallback()
       render_subsection_default();
     });
 }
