@@ -442,7 +442,7 @@ body {
     height: fit-content;
     padding-top: 4rem;
     padding-bottom: 2rem;
-    background-color: steelblue;
+    background-color: #ff9d00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -490,7 +490,7 @@ body {
 
 /* FOOTER */
 footer {
-    height: 30vh;
+    height: 10vh;
     background-color: gray;
     display: flex;
     justify-content: space-evenly;
