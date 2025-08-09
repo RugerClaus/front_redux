@@ -388,6 +388,10 @@ body {
     object-fit: contain;
 }
 
+.about_wrapper .band_wrapper .article .band_photo_wrapper p {
+    max-width: 80%;
+}
+
 .about_wrapper .band_wrapper .article .band_photo_wrapper img {
     object-fit: contain;
     max-width: 90%;
