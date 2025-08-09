@@ -7,6 +7,10 @@
     font-family: Helvetica;
 }
 
+.hiddensiteimg {
+    display: none;
+}
+
 body {
     overflow-x: hidden;
     max-width: 100vw;
