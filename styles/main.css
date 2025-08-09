@@ -374,12 +374,18 @@ body {
 }
 
 .about_wrapper .band_wrapper .article .band_photo_wrapper {
-    max-width: 56.5625rem;
+    max-width: 90vw;
     max-height: 31.8125rem;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: contain;
+}
+
+.about_wrapper .band_wrapper .article .band_photo_wrapper img {
+    object-fit: contain;
+    max-width: 90%;
 }
 
 .about_wrapper .article .about_them_cbd_text {
@@ -387,9 +393,9 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid white;
-    padding: 2rem;
-    max-width: 50rem;
-    height: 5rem;
+    padding: 1.5rem;
+    max-width: 90vw;
+    height: fit-content;
 }
 
 .about_wrapper .member_wrapper {
@@ -401,11 +407,6 @@ body {
     gap: 10rem;
     justify-content: space-evenly;
     min-height: 100vh;
-}
-
-.about_rapper .member_wrapper img {
-    object-fit: contain;
-    max-width: 50%;
 }
 
 /*THIS IS .about_wrapper .member_wrapper .text_wrapper*/
@@ -561,6 +562,7 @@ footer .footer_section p {
     }
 
     body {
+        overflow: hidden;
         min-width: 100vw;
     }
 
@@ -570,6 +572,7 @@ footer .footer_section p {
 
     .landing_section_wrapper 
     {
+        overflow: hidden;
         display: flex;
         flex-direction: column;
     }
@@ -593,6 +596,57 @@ footer .footer_section p {
 
     .landing_section_wrapper .bottom .bottom_inner_wrapper .navbar ul{
         flex-direction: column;
+        gap: 2rem;
     }
     
 }
+
+@media (max-width: 640px) {
+    /* Reset paddings and gaps on key flex containers */
+    .about_wrapper .member_wrapper,
+    .home_wrapper .main_content_wrapper .article_section_wrapper {
+      flex-wrap: wrap;      /* allow wrapping */
+      padding-left: 1rem !important; /* reduce left padding */
+      padding-right: 1rem !important; /* add right padding so content isn't glued */
+      gap: 1rem !important;  /* reduce gap */
+      width: 100%;
+    }
+  
+    /* Make flex items take full width and not overflow */
+    .about_wrapper .member_wrapper > *,
+    .home_wrapper .main_content_wrapper .article_section_wrapper article {
+      flex: 1 1 100%;
+      max-width: 100% !important;
+    }
+  
+    /* Shrink booking form width */
+    .booking_wrapper .booking_form {
+      width: 90vw !important;  /* 90% of viewport width */
+      height: auto !important; /* let height adjust */
+      margin: 0 auto;
+    }
+  
+    /* Make images responsive */
+    img, .carousel_image, .siteimg {
+      max-width: 100vw !important;
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain;
+    }
+  
+    /* Body and containers */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        margin: 0;  /* ensure no default margins */
+        padding: 0;
+    }  
+    .corner_record_wrapper {
+        bottom: 2rem;
+        right: 2rem;
+        position: fixed;
+        top: auto;
+        left: auto;
+    }
+}
+  

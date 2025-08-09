@@ -161,6 +161,7 @@ function initialize_about_section() {
     
     const p = document.createElement('p');
     p.id = 'about_band_text';
+    p.class = "about_band_text"
     p.textContent = 'Them Coldblooded Drifters is a band from Salt Lake City, Utah, USA. We make groovy Groove Metal with a dash of everything else. We aim to provide a memorable experience for all whom enter our realm!';
     
     aboutDiv.appendChild(p);
