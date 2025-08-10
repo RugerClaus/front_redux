@@ -1,4 +1,4 @@
-const api_url = "http://localhost:7000"
+const api_url = "http://127.0.0.1:8000"
 
 const carousel = document.querySelector('.carousel');
 const indicatorWrapper = document.querySelector('.carousel_indicator_wrapper');
@@ -99,7 +99,7 @@ fetch(`${api_url}/carousel`, {
     return res.json();
   })
   .then(data => {
-    const carousel_images = data.images;
+    const carousel_images = data;
     if (Array.isArray(carousel_images) && carousel_images.length) {
       console.log("Loading Carousel Images: " + data.status)
       render_carousel(carousel_images)

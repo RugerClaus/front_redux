@@ -1,4 +1,4 @@
-const api_host = "http://localhost:7000";
+const api_host = "http://127.0.0.1:8000";
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", initialize_about_section);
