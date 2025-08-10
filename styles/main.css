@@ -616,7 +616,7 @@ footer .footer_section p {
     }
     .landing_section_wrapper .top
     {
-        min-height: 50vh;
+        min-height: 90vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -628,7 +628,7 @@ footer .footer_section p {
     }
 
     .landing_section_wrapper .bottom {
-        height: 150vh;
+        height: 110vh;
     }
 
     .landing_section_wrapper .bottom .bottom_inner_wrapper .navbar ul{
