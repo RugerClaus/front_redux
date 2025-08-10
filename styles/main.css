@@ -584,7 +584,7 @@ footer .footer_section p {
     }
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
         min-width: 100vw;
     }
 
@@ -609,13 +609,14 @@ footer .footer_section p {
 
     .landing_section_wrapper 
     {
+        top: 0;
         overflow: hidden;
         display: flex;
         flex-direction: column;
     }
     .landing_section_wrapper .top
     {
-        height: 100vh;
+        min-height: 50vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -626,7 +627,7 @@ footer .footer_section p {
     }
 
     .landing_section_wrapper .bottom {
-        height: 100vh;
+        height: 150vh;
     }
 
     .landing_section_wrapper .bottom .bottom_inner_wrapper .navbar ul{
