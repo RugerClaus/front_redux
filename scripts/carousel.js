@@ -1,4 +1,4 @@
-const api_url = "http://127.0.0.1:8000"
+const api_url = "https://apidev.themcoldbloodeddrifters.com"
 
 const carousel = document.querySelector('.carousel');
 const indicatorWrapper = document.querySelector('.carousel_indicator_wrapper');

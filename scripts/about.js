@@ -1,4 +1,4 @@
-const api_host = "http://127.0.0.1:8000";
+const api_host = "https://apidev.themcoldbloodeddrifters.com";
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", initialize_about_section);
@@ -98,7 +98,8 @@ function initialize_about_section() {
   
 
     console.log('Band list left to right:', memleftright);
-    const figcaption = document.createElement('p');
+    const figcaption = document.createElement('div');
+    figcaption.classList.add("lefttoright")
     figcaption.innerHTML = `${name} from left to right: ${memleftright || '(Enter here :))'}`;
   
     figure.appendChild(img);
@@ -150,7 +151,8 @@ function initialize_about_section() {
     img.src = 'https://placehold.co/1280x720?text=Band+Photo';
     img.alt = 'Band Photo Placeholder';
     
-    const caption = document.createElement('p');
+    const caption = document.createElement('div');
+    caption.classList.add("lefttoright")
     caption.innerHTML = `Them Coldblooded Drifters from left to right: Enter Here`
     
     figure.appendChild(img);
