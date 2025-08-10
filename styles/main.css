@@ -389,7 +389,7 @@ body {
 }
 
 .about_wrapper .band_wrapper .article .band_photo_wrapper {
-    max-width: 90vw;
+    max-width: 56.5625rem;
     max-height: 31.8125rem;
     overflow: hidden;
     display: flex;
@@ -413,7 +413,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
-    max-width: 90vw;
+    max-width: 56.5625rem;
     height: fit-content;
 }
 
