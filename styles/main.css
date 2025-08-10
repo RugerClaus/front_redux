@@ -217,6 +217,7 @@ body {
     display: flex;
     height: 10%;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -241,6 +242,10 @@ body {
 .landing_section_wrapper .bottom .bottom_inner_wrapper nav ul li a:hover {
     animation: fade_button .5s;
     color: #8c49cc;
+}
+
+.landing_section_wrapper .bottom .bottom_inner_wrapper nav .mobile_socmed {
+    display: none;
 }
 
 /* HOME PAGE */
@@ -570,6 +575,21 @@ footer .footer_section p {
     body {
         overflow: hidden;
         min-width: 100vw;
+    }
+
+    .landing_section_wrapper .bottom .bottom_inner_wrapper nav {
+        gap: 2rem;
+        align-items: center;
+    }
+    .landing_section_wrapper .bottom .bottom_inner_wrapper nav .mobile_socmed {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .landing_section_wrapper .bottom .bottom_inner_wrapper nav .mobile_socmed .mobile_socmed_section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
     }
 
     .socials_sidebar_wrapper {
