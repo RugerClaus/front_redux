@@ -620,6 +620,7 @@ footer .footer_section p {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 10px;
     }
 
     .landing_section_wrapper .top img {
