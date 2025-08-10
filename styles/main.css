@@ -350,7 +350,6 @@ body {
 
 .home_wrapper .main_content_wrapper .article_section_wrapper article {
     max-width: 20rem;
-    border: 1px solid white;
     border-radius: 2rem;
     padding: 2rem;
     height: fit-content;
@@ -413,7 +412,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
     padding: 1.5rem;
     max-width: 90vw;
     height: fit-content;
