@@ -1,3 +1,10 @@
+// DISCLAIMER: I've probably rewritten this a thousand times and had to make a tweak
+// despite the fact that I thought I had truly finished
+
+// However, the last bug has been fixed. I'll need to test it on true mobile (as 
+// dev tools in browsers are only emulators and not great at that). So I'll commit this
+// to the main branch and pray I didn't break anything, but could always roll back.
+
 window.onload = function(){
     window.scrollTo(0,0)
 }
@@ -5,10 +12,6 @@ window.onload = function(){
 const media_url = 'media.themcoldbloodeddrifters.com'
 
 const body = document.querySelector('body')
-
-// specialized functionality
-
-// carousel
 const carousel_script_tag = document.createElement("script")
 const about_script_tag = document.createElement("script")
 const booking_form_script_tag = document.createElement("script")
@@ -103,35 +106,37 @@ function toggle_band_member_nav()
 
 
 window.addEventListener("scroll", () => {
-const navbar = document.querySelector('.navbar')
-const top_nav_bar = document.querySelector('.fixed_navbar_wrapper')
-let navbar_distance_from_top = navbar.getBoundingClientRect().top
-if (navbar_distance_from_top <= 0)
-{
-    top_nav_bar.style.display = "block"
-}
-else 
-{
-    top_nav_bar.style.display = "none"
-}
-handle_scroll_buttons()
-const band_member_nav = document.querySelector(".band_member_nav")
-const band_wrapper = document.querySelector(".about_wrapper")
-const band_wrapper_distance_from_top = band_wrapper.getBoundingClientRect().top
+    const navbar = document.querySelector('.navbar')
+    const top_nav_bar = document.querySelector('.fixed_navbar_wrapper')
+    let navbar_distance_from_top = navbar.getBoundingClientRect().top
+    if (navbar_distance_from_top <= 0)
+    {
+        top_nav_bar.style.display = "block"
+    }
+    else 
+    {
+        top_nav_bar.style.display = "none"
+    }
+    handle_scroll_buttons()
+    const band_member_nav = document.querySelector(".band_member_nav")
+    const band_wrapper = document.querySelector(".about_wrapper")
+    const band_wrapper_distance_from_top = band_wrapper.getBoundingClientRect().top
+    const booking_wrapper = document.querySelector(".booking_wrapper")
 
-if(band_wrapper_distance_from_top <= 0)
-{
-    band_member_nav.style.display = "flex"
-}
-else
-{
-    band_member_nav.style.display = "none"
-}
-const booking_wrapper = document.querySelector(".booking_wrapper")
-const booking_wrapper_distance_from_top = booking_wrapper.getBoundingClientRect().top
-if (booking_wrapper_distance_from_top <= 0){
-    band_member_nav.style.display = "none"
-}
+
+    if(band_wrapper_distance_from_top <= 0)
+    {
+        band_member_nav.style.display = "flex"
+    }
+    else
+    {
+        band_member_nav.style.display = "none"
+    }
+    const booking_wrapper_distance_from_top = booking_wrapper.getBoundingClientRect().top
+    if(booking_wrapper_distance_from_top < 70)
+    {
+        band_member_nav.style.display = 'none'
+    }
 })
 
 let socials_sidebar_state = true
@@ -153,8 +158,8 @@ close_socials_button.addEventListener("click", () => {
         socials_wrapper.style.animation = "close_socials .5s"
     } else {
         socials_wrapper.style.animation = "open_socials .5s"
-        socials_wrapper.style.width = "8rem" // or whatever your default width is
-        socials_inner_wrapper.style.display = "flex" // or "block" depending on your layout
+        socials_wrapper.style.width = "8rem"
+        socials_inner_wrapper.style.display = "flex"
         close_socials_button.innerHTML = ">>"
         close_socials_button.style.height = "2rem"
         close_socials_button.style.backgroundColor = "red"
