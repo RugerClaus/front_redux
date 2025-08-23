@@ -1,4 +1,5 @@
 <?php
+//contact.php
 header('Content-Type: application/json');
 
 $config = require __DIR__ . '/db_config.php';

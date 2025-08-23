@@ -152,6 +152,15 @@
 
     </div>
     <div class="booking_wrapper" id="booking">
+        <?php
+            session_start();
+            if (empty($_SESSION['captcha_a']) || empty($_SESSION['captcha_b'])) {
+                $_SESSION['captcha_a'] = rand(1, 10);
+                $_SESSION['captcha_b'] = rand(1, 10);
+            }
+
+            $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}?";
+        ?>
         <form class="booking_form" action="/gateway/contact.php" method="POST">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
@@ -168,7 +177,9 @@
             <label for="message_body">Message</label>
             <textarea name="message_body" id="message_body"></textarea>
 
-            <label id="captcha_label"></label>
+            <label id="captcha_label">
+                <?php echo htmlspecialchars($captcha_question, ENT_QUOTES, 'UTF-8'); ?>
+            </label>
             <input type="number" name="captcha" id="captcha_input" required>
 
             <button type="submit" class="send_message_button">Send</button>
