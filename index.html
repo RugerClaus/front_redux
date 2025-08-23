@@ -151,20 +151,26 @@
     <div class="live_wrapper" id="live">
 
     </div>
-    <!-- Booking Page section -->
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" action="https://api.themcoldbloodeddrifters.com/contact/send" method="POST">
+        <form class="booking_form" action="/gateway/contact.php" method="POST">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
+
             <label for="message_subject">Subject:</label>
             <select name="message_subject" id="contact_subject_select_field">
                 <option id="book" value="book">Booking</option>
                 <option id="inquiry" value="inquiry">Inquiry</option>
             </select>
+
             <label for="contact_phone">Phone Number:</label>
             <input type="text" name="contact_phone" id="phone" required>
+
             <label for="message_body">Message</label>
-            <textarea name="message_body" id="message_body" name="message_body"></textarea>
+            <textarea name="message_body" id="message_body"></textarea>
+
+            <label id="captcha_label"></label>
+            <input type="number" name="captcha" id="captcha_input" required>
+
             <button type="submit" class="send_message_button">Send</button>
         </form>
     </div>
