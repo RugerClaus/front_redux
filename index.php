@@ -161,7 +161,7 @@
 
             $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}?";
         ?>
-        <form class="booking_form" action="/gateway/contact.php" method="POST">
+        <form class="booking_form" action="gateway/contact.php" method="POST">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
 
