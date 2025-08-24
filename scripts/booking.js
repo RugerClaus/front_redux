@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusMessage = document.getElementById('status_message');
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // stop default page reload
+        e.preventDefault(); // THIS stops page reload
+        e.stopPropagation(); // stop any other submit handlers
 
         statusMessage.style.display = 'flex';
         statusMessage.textContent = "Sending...";

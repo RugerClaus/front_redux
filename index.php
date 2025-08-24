@@ -161,7 +161,7 @@
 
     </div>
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" method="POST">
+        <form class="booking_form" method="POST" action="javascript:void(0);">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
 
