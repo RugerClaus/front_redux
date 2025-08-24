@@ -1,38 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector('.booking_form');
-    if (!form) return; // sanity check
+    const sendButton = form.querySelector('.send_message_button');
+    const statusMessage = document.getElementById('status_message');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        console.log('Form submit intercepted'); // debug
+    const submitForm = async () => {
+        statusMessage.style.display = 'flex';
+        statusMessage.textContent = "Sending...";
 
-        const statusMessage = document.getElementById('status_message');
         const formData = new FormData(form);
 
-        statusMessage.style.display = 'flex';
-
         try {
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: formData,
+            const response = await fetch('/gateway/contact.php', {
+                method: 'POST',
+                body: formData
             });
 
-            const text = await response.text();
+            if (response.ok) {
+                const text = await response.text();
 
-            if (text.includes("captcha_error")) {
-                statusMessage.textContent = "Incorrect answer to the math question.";
+                if (text.includes("captcha_error")) {
+                    statusMessage.textContent = "Incorrect answer to the math question.";
+                } else {
+                    statusMessage.textContent = "Message sent!";
+                    form.reset();
+                }
             } else {
-                statusMessage.textContent = "Message sent!";
-                form.reset();
+                statusMessage.textContent = "Something went wrong.";
             }
-        } catch (err) {
+        } catch (error) {
             statusMessage.textContent = "Network error.";
-            console.error(err);
+            console.error(error);
         }
 
         setTimeout(() => {
-            statusMessage.textContent = "";
             statusMessage.style.display = 'none';
+            statusMessage.textContent = "";
         }, 2000);
+    };
+
+    // Click event for the button
+    sendButton.addEventListener('click', submitForm);
+
+    // Submit form when Enter is pressed in any input or textarea
+    form.addEventListener('keydown', (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault(); // prevent default Enter behavior
+            submitForm();
+        }
     });
 });
