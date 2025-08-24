@@ -167,8 +167,8 @@
 
             <label for="message_subject">Subject:</label>
             <select name="message_subject" id="contact_subject_select_field">
-                <option value="book">Booking</option>
-                <option value="inquiry">Inquiry</option>
+                <option id="book" value="book">Booking</option>
+                <option id="inquiry" value="inquiry">Inquiry</option>
             </select>
 
             <label for="contact_phone">Phone Number:</label>

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendButton = form.querySelector('.send_message_button');
     const statusMessage = document.getElementById('status_message');
 
-    const submitForm = async () => {
+    const sendForm = async () => {
         statusMessage.style.display = 'flex';
         statusMessage.textContent = "Sending...";
 
@@ -38,14 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     };
 
-    // Click event for the button
-    sendButton.addEventListener('click', submitForm);
+    // Handle button click
+    sendButton.addEventListener('click', sendForm);
 
-    // Submit form when Enter is pressed in any input or textarea
-    form.addEventListener('keydown', (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault(); // prevent default Enter behavior
-            submitForm();
-        }
+    // Handle Enter keypress anywhere in the form
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // prevent page reload
+        sendForm();
     });
 });
