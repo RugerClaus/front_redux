@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector('.booking_form');
-    const sendButton = form.querySelector('.send_message_button');
     const statusMessage = document.getElementById('status_message');
 
-    const sendForm = async () => {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // stop default page reload
+
         statusMessage.style.display = 'flex';
         statusMessage.textContent = "Sending...";
 
@@ -36,14 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
             statusMessage.style.display = 'none';
             statusMessage.textContent = "";
         }, 2000);
-    };
-
-    // Handle button click
-    sendButton.addEventListener('click', sendForm);
-
-    // Handle Enter keypress anywhere in the form
-    form.addEventListener('submit', (e) => {
-        e.preventDefault(); // prevent page reload
-        sendForm();
     });
 });
