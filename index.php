@@ -161,7 +161,7 @@
 
     </div>
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" method="POST">
+        <form class="booking_form" action="/gateway/contact.php" method="POST">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
 
@@ -182,7 +182,7 @@
             </label>
             <input type="number" name="captcha" id="captcha_input" required>
 
-            <button type="button" class="send_message_button">Send</button>
+            <button type="submit" class="send_message_button">Send</button>
         </form>
     </div>
     <footer>
