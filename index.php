@@ -161,7 +161,7 @@
 
     </div>
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" action="/gateway/contact.php" method="POST">
+        <form class="booking_form" method="POST" onsubmit="return false;">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
 
