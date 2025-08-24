@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const captchaInput = document.getElementById('captcha_input');
     const form = document.querySelector('.booking_form');
-    const statusMessage = document.getElementById('status_message');
+    if (!form) return; // sanity check
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log('Form submit intercepted'); // debug
+
+        const statusMessage = document.getElementById('status_message');
+        const formData = new FormData(form);
 
         statusMessage.style.display = 'flex';
-        const formData = new FormData(form);
 
         try {
             const response = await fetch(form.action, {
@@ -15,21 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData,
             });
 
-            if (response.ok) {
-                const text = await response.text();
+            const text = await response.text();
 
-                if (text.includes("captcha_error")) {
-                    statusMessage.textContent = "Incorrect answer to the math question.";
-                } else {
-                    statusMessage.textContent = "Message sent!";
-                    form.reset();
-                }
+            if (text.includes("captcha_error")) {
+                statusMessage.textContent = "Incorrect answer to the math question.";
             } else {
-                statusMessage.textContent = "Something went wrong.";
+                statusMessage.textContent = "Message sent!";
+                form.reset();
             }
-        } catch (error) {
+        } catch (err) {
             statusMessage.textContent = "Network error.";
-            console.error(error);
+            console.error(err);
         }
 
         setTimeout(() => {
