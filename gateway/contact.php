@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 session_start();
 
-$config = require __DIR__ . '/../db_config.php';
+$config = require __DIR__ . '/db.php';
 
 $contact_name    = trim($_POST['contact_name'] ?? '');
 $message_subject = trim($_POST['message_subject'] ?? '');
