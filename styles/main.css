@@ -483,7 +483,6 @@ body {
 }
 
 .booking_wrapper .booking_form .send_message_button:hover {
-    border: 3px solid red;
     background-color: rgba(0,0,0,0.1);
     cursor: pointer;
 }
