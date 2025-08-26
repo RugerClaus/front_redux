@@ -469,10 +469,10 @@ body {
 
 .booking_wrapper .booking_form {
     width: 80%;
-    height: 40rem;
+    min-height: 40rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.1rem;
 }
 
 .booking_wrapper .booking_form .send_message_button {
@@ -492,7 +492,7 @@ body {
 
 .booking_wrapper .booking_form input,select {
     height: 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .booking_wrapper .booking_form textarea {

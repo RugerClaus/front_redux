@@ -21,11 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $contact_name    = trim($_POST['contact_name'] ?? '');
     $message_subject = trim($_POST['message_subject'] ?? '');
+    $contact_email = trim($_POST['contact_email'] ?? '');
     $contact_phone   = trim($_POST['contact_phone'] ?? '');
     $message_body    = trim($_POST['message_body'] ?? '');
     $captcha_input   = trim($_POST['captcha'] ?? '');
 
-    if (empty($contact_name) || empty($message_subject) || empty($contact_phone)) {
+    if (empty($contact_name) || empty($message_subject) || empty($contact_email)) {
         echo json_encode(['success' => false, 'message' => 'Missing required fields.']);
         exit;
     }
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if (!preg_match("/^[0-9\+\-\(\)\s]+$/", $contact_phone)) {
+    if (!preg_match("/^[0-9\+\-\(\)\s]+$/", $contact_phone) && $contact_phone != '') {
         echo json_encode(['success' => false, 'message' => 'Invalid phone number.']);
         exit;
     }
@@ -49,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message_body = htmlspecialchars($message_body, ENT_QUOTES, 'UTF-8');
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO contact_messages (name, subject, phone, body, created_at) VALUES (?, ?, ?, ?, NOW())");
-        $stmt->execute([$contact_name, $message_subject, $contact_phone, $message_body]);
+        $stmt = $pdo->prepare("INSERT INTO contact_messages (name, subject, email, phone, body, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
+        $stmt->execute([$contact_name, $message_subject, $contact_email, $contact_phone, $message_body]);
 
         $_SESSION['captcha_a'] = rand(1, 10);
         $_SESSION['captcha_b'] = rand(1, 10);
@@ -240,8 +241,11 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
                 <option id="inquiry" value="inquiry">Inquiry</option>
             </select>
 
+            <label for="contact_email">Email address:</label>
+            <input type="email" name="contact_email" id="email">
+
             <label for="contact_phone">Phone Number:</label>
-            <input type="text" name="contact_phone" id="phone" required>
+            <input type="text" name="contact_phone" id="phone">
 
             <label for="message_body">Message</label>
             <textarea name="message_body" id="message_body"></textarea>
