@@ -178,6 +178,8 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-size: clamp(.3rem, 2vw + .4rem, 1rem);
 }
 
 .landing_section_wrapper {
