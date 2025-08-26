@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 session_start();
 
-$config = require __DIR__ . '/db.php';
+$config = require __DIR__ . '/dbprod.php';
 
 try {
     $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
