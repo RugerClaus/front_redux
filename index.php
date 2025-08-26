@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// --- DATABASE CONFIG ---
 $config = require __DIR__ . '/gateway/dbprod.php';
 
 try {
@@ -17,7 +16,6 @@ try {
     }
 }
 
-// --- HANDLE POST REQUEST (AJAX) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
 
@@ -68,8 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     exit;
 }
-
-// --- IF GET REQUEST, SHOW PAGE ---
 
 if (empty($_SESSION['captcha_a']) || empty($_SESSION['captcha_b'])) {
     $_SESSION['captcha_a'] = rand(1, 10);
@@ -135,7 +131,9 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
         </div>
     </div>
 
-    <div id="status_message" class="message_status"></div>
+    <div id="status_message" class="message_status">
+        <div class="message_status_text"></div>
+    </div>
     <!-- Landing Page -->
     <div class="landing_section_wrapper">
         <div class="top">
@@ -255,7 +253,6 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
 
             <button type="submit" class="send_message_button">Send</button>
         </form>
-        <div id="status_message" class="message_status"></div>
     </div>
 
     <footer>
@@ -285,11 +282,15 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
 
         const statusEl = document.querySelector(".message_status");
         statusEl.innerHTML = `<p>${data.message}</p>`;
-        console.log(data.message)
-        statusEl.style.color = data.success ? "green" : "red";
+        console.log(data.message);
+        statusEl.style.color = data.success ? "white" : "red";
+        statusEl.style.display = 'flex';
 
         if (data.success) {
             form.reset();
+            setTimeout(() => {
+                document.querySelector('.message_status').style.display = 'none';
+            }, 2000);
             if (data.captcha_question) {
                 document.getElementById("captcha_label").textContent = data.captcha_question;
             }
