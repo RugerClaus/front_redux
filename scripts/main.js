@@ -14,15 +14,12 @@ const media_url = 'media.themcoldbloodeddrifters.com'
 const body = document.querySelector('body')
 const carousel_script_tag = document.createElement("script")
 const about_script_tag = document.createElement("script")
-const booking_form_script_tag = document.createElement("script")
 const home_script_tag = document.createElement("script")
 carousel_script_tag.src = 'scripts/carousel.js'
 about_script_tag.src = 'scripts/about.js'
-booking_form_script_tag.src = 'scripts/booking.js'
 home_script_tag.src = 'scripts/home.js'
 body.appendChild(carousel_script_tag)
 body.appendChild(about_script_tag)
-body.appendChild(booking_form_script_tag)
 body.appendChild(home_script_tag)
 
 // main site logic

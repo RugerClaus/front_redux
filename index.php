@@ -1,11 +1,82 @@
 <?php
-    session_start();
-    if (empty($_SESSION['captcha_a']) || empty($_SESSION['captcha_b'])) {
-        $_SESSION['captcha_a'] = rand(1, 10);
-        $_SESSION['captcha_b'] = rand(1, 10);
+session_start();
+
+// --- DATABASE CONFIG ---
+$config = require __DIR__ . '/gateway/dbprod.php';
+
+try {
+    $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
+    $pdo = new PDO($dsn, $config['user'], $config['pass'], [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (Exception $e) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Database connection failed.']);
+        exit;
+    }
+}
+
+// --- HANDLE POST REQUEST (AJAX) ---
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json');
+
+    $contact_name    = trim($_POST['contact_name'] ?? '');
+    $message_subject = trim($_POST['message_subject'] ?? '');
+    $contact_phone   = trim($_POST['contact_phone'] ?? '');
+    $message_body    = trim($_POST['message_body'] ?? '');
+    $captcha_input   = trim($_POST['captcha'] ?? '');
+
+    if (empty($contact_name) || empty($message_subject) || empty($contact_phone)) {
+        echo json_encode(['success' => false, 'message' => 'Missing required fields.']);
+        exit;
     }
 
-    $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}?";
+    if (!in_array($message_subject, ['book', 'inquiry'])) {
+        echo json_encode(['success' => false, 'message' => 'Invalid subject.']);
+        exit;
+    }
+
+    if (!preg_match("/^[0-9\+\-\(\)\s]+$/", $contact_phone)) {
+        echo json_encode(['success' => false, 'message' => 'Invalid phone number.']);
+        exit;
+    }
+
+    if (!isset($_SESSION['captcha_a'], $_SESSION['captcha_b']) || 
+        intval($captcha_input) !== ($_SESSION['captcha_a'] + $_SESSION['captcha_b'])) {
+        echo json_encode(['success' => false, 'message' => 'Incorrect captcha.']);
+        exit;
+    }
+
+    $message_body = htmlspecialchars($message_body, ENT_QUOTES, 'UTF-8');
+
+    try {
+        $stmt = $pdo->prepare("INSERT INTO contact_messages (name, subject, phone, body, created_at) VALUES (?, ?, ?, ?, NOW())");
+        $stmt->execute([$contact_name, $message_subject, $contact_phone, $message_body]);
+
+        $_SESSION['captcha_a'] = rand(1, 10);
+        $_SESSION['captcha_b'] = rand(1, 10);
+        $new_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}?";
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Message sent successfully!',
+            'captcha_question' => $new_question
+        ]);
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => 'Server error. Please try again later.']);
+    }
+    exit;
+}
+
+// --- IF GET REQUEST, SHOW PAGE ---
+
+if (empty($_SESSION['captcha_a']) || empty($_SESSION['captcha_b'])) {
+    $_SESSION['captcha_a'] = rand(1, 10);
+    $_SESSION['captcha_b'] = rand(1, 10);
+}
+
+$captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}?";
 ?>
 <!-- This is a single page application all other major functionalities use their own apps. -->
 <!DOCTYPE html>
@@ -161,7 +232,7 @@
 
     </div>
     <div class="booking_wrapper" id="booking">
-        <form class="booking_form" method="POST" action="javascript:void(0);">
+        <form class="booking_form" method="POST" id="booking_form">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
 
@@ -184,7 +255,9 @@
 
             <button type="submit" class="send_message_button">Send</button>
         </form>
+        <div id="status_message" class="message_status"></div>
     </div>
+
     <footer>
         <div class="footer_section">
             
@@ -197,5 +270,32 @@
         </div>
     </footer>
     <script src="scripts/main.js"></script>
+
+    <script>
+    document.getElementById("booking_form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        const res = await fetch("", {
+            method: "POST",
+            body: formData
+        });
+        const data = await res.json();
+
+        const statusEl = document.querySelector(".message_status");
+        statusEl.innerHTML = `<p>${data.message}</p>`;
+        console.log(data.message)
+        statusEl.style.color = data.success ? "green" : "red";
+
+        if (data.success) {
+            form.reset();
+            if (data.captcha_question) {
+                document.getElementById("captcha_label").textContent = data.captcha_question;
+            }
+        }
+    });
+    </script>
+
 </body>
 </html>
