@@ -433,6 +433,14 @@ body {
     min-height: 100vh;
 }
 
+.about_wrapper .member_wrapper .portrait_photo_wrapper {
+    width: 50%;
+}
+.about_wrapper .member_wrapper .portrait_photo_wrapper img {
+    object-fit: contain;
+    max-width: 100%;
+}
+
 /*THIS IS .about_wrapper .member_wrapper .text_wrapper*/
 .text_wrapper {
     color: black;
@@ -441,7 +449,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 30rem;
+    width: 50%;
 }
 
 .text_wrapper .bio_wrapper {
