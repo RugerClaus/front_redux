@@ -41,8 +41,8 @@ function initialize_about_section() {
     text_wrapper.classList.add("text_wrapper");
   
     text_wrapper.innerHTML = `
-      <h3>${name || "Unknown Member"}</h3>
-      <h4>${instrument || "Instrument Unknown"}</h4>
+      <h2>${name || "Unknown Member"}</h2>
+      <p>${instrument || "Instrument Unknown"}</p>
       <div class="bio_wrapper">
         <p>${bio || "No bio available."}</p>
       </div>
