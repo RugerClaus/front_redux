@@ -645,6 +645,9 @@ footer .footer_section p {
         flex-direction: column;
         gap: 2rem;
     }
+    .about_wrapper .band_wrapper .article .band_photo_wrapper {
+        width: 95vw;
+    }
     
 }
 
