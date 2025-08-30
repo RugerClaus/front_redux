@@ -1,4 +1,4 @@
-const api_location = 'https://apidev.themcoldbloodeddrifters.com';
+const api_location = 'https://api.themcoldbloodeddrifters.com';
 const left_home_text = document.getElementById("left_home_text")
 const right_home_text = document.getElementById("right_home_text")
 

@@ -1,4 +1,4 @@
-const api_host = "https://apidev.themcoldbloodeddrifters.com";
+const api_host = "https://api.themcoldbloodeddrifters.com";
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", initialize_about_section);
