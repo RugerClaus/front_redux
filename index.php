@@ -79,6 +79,13 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- uncomment below in produciton and delete this line -->
+
+    <!-- <meta name="description" content="Them Cold Blooded Drifters - Official site. Music, live shows, booking, and merch store.">
+    <meta name="keywords" content="rock band, live music, album, booking, merch, stoner metal, stoner, weed, salt lake city, local music, salt lake, utah, bands, music">
+    <meta name="robots" content="index, follow"> -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
@@ -136,7 +143,7 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
         <div class="message_status_text"></div>
     </div>
     <!-- Landing Page -->
-    <div class="landing_section_wrapper">
+    <section class="landing_section_wrapper">
         <div class="top">
             <div class="top_inner_wrapper">
                 <img id="gun" src="https://media.themcoldbloodeddrifters.com/assets/master/tempback.png" alt="Them Cold Blooded Drifters">
@@ -197,10 +204,10 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
                 </nav>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Home Page section -->
-    <div class="home_wrapper" id="home">
+    <section class="home_wrapper" id="home">
         <div class="main_content_wrapper">
             <div class="announcements_wrapper">
                 <div class="header">
@@ -222,15 +229,15 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
                 </article>
             </div>
         </div>
-    </div>
+    </section>
     <!-- About Page section -->
-    <div class="about_wrapper" id="about">
+    <section class="about_wrapper" id="about">
         
-    </div>
+    </section>
     <div class="live_wrapper" id="live">
 
     </div>
-    <div class="booking_wrapper" id="booking">
+    <section class="booking_wrapper" id="booking">
         <form class="booking_form" method="POST" id="booking_form">
             <label for="contact_name">Company/Your Name:</label>
             <input type="text" name="contact_name" id="contact_name_input" required>
@@ -257,7 +264,7 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
 
             <button type="submit" class="send_message_button">Send</button>
         </form>
-    </div>
+    </section>
 
     <footer>
         <div class="footer_section">
@@ -301,6 +308,21 @@ $captcha_question = "What is {$_SESSION['captcha_a']} + {$_SESSION['captcha_b']}
         }
     });
     </script>
+<!-- uncomment this in production and delete this line -->
+<!-- <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Them Cold Blooded Drifters",
+  "url": "https://www.themcoldbloodeddrifters.com",
+  "sameAs": [
+    "https://www.facebook.com/people/Them-Coldblooded-Drifters/61574624801989/",
+    "https://www.instagram.com/them_coldblooded_drifters/",
+    "https://tiktok.com/@themcoldbloodeddrifters",
+    "https://www.youtube.com/@ThemColdbloodedDrifters"
+]
+}
+</script> -->
 
 </body>
 </html>
